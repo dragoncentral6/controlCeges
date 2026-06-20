@@ -281,11 +281,15 @@ function renderizarVistaPrincipal() {
             const nuevaPosicion = e.target.value;
             actualizarCampoGrua(grua.id, 'posicion', nuevaPosicion);
 
-            if (nuevaPosicion !== '') {
+            if (nuevaPosicion === '') {
+                // Si escoge "--" (Vacío), formatea y borra las observaciones en Firebase e Interfaz
+                actualizarCampoGrua(grua.id, 'observaciones', '');
+                inputObs.value = '';
+            } else {
+                // Si escoge una posición válida, formatea la hora limpia sin corchetes
                 const horaStr = obtenerHoraActualAMPM();
-                const textoFinal = `[${horaStr}] `; 
-                actualizarCampoGrua(grua.id, 'observaciones', textoFinal);
-                inputObs.value = textoFinal;
+                actualizarCampoGrua(grua.id, 'observaciones', horaStr);
+                inputObs.value = horaStr;
             }
         });
 
