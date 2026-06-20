@@ -87,7 +87,7 @@ body {
 }
 
 /* ==========================================================================
-   PLANILLA LINEAL (INTERFAZ DE VISUALIZACIÓN) - VERSIÓN ULTRA COMPACTA MÓVIL
+   PLANILLA LINEAL (INTERFAZ DE VISUALIZACIÓN) - VERSIÓN ULTRA-MICRO MÓVIL
    ========================================================================= */
 .contenedor-filas-lineales { 
     display: flex; 
@@ -99,14 +99,14 @@ body {
     display: flex; 
     align-items: center; 
     width: 100%; 
-    padding: 3px 2px; /* Reducido para optimizar espacio vertical */
+    padding: 1px 0; 
 }
 .celda-lineal { 
-    padding: 1px; 
+    padding: 0 1px; 
 }
 
 .celda-alias-alerta-bloque {
-    flex: 0 0 55px; /* Más compacto para dar más margen a observaciones */        
+    flex: 0 0 46px;         
     display: flex;
     align-items: center;
     justify-content: flex-start; 
@@ -122,7 +122,7 @@ body {
 }
 
 .texto-alias-label {
-    font-size: 0.68rem; /* Fuente más estilizada y pequeña */    
+    font-size: 0.62rem;     
     font-weight: 700;
     color: var(--texto);
     white-space: nowrap;
@@ -136,13 +136,13 @@ body {
     background-color: var(--primario);
     color: #ffffff;
     text-align: center;
-    padding: 3px 5px;
+    padding: 2px 4px;
     border-radius: 4px;
     position: absolute;
     z-index: 150;
     bottom: 115%;          
     left: 0;
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -157,11 +157,11 @@ body {
 }
 
 .celda-select { 
-    flex: 0 0 72px; /* Espacio exacto para los campos de estado y posición */        
+    flex: 0 0 60px;         
 }
 .select-lineal-interactivo {
     width: 100%;
-    height: 22px;
+    height: 18px;
     border: none;
     background: transparent;
     outline: none;
@@ -169,14 +169,13 @@ body {
     text-transform: uppercase;
     appearance: none;
     -webkit-appearance: none;
-    padding: 0 2px;
+    padding: 0;
     font-weight: 700;
     
-    /* 👇 Mantiene la base de 16px para evitar el zoom nativo de iOS, pero reduce el tamaño visual */
     font-size: 16px; 
-    transform: scale(0.68); 
+    transform: scale(0.58); 
     transform-origin: left center;
-    width: 147%; /* Compensa el ancho tras el escalado */
+    width: 172%; 
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
@@ -190,19 +189,18 @@ body {
 }
 .input-observacion-lineal {
     width: 100%;
-    height: 22px;
+    height: 18px;
     border: none;
     background: transparent;
-    padding: 0 2px;
+    padding: 0;
     color: #64748b;
     outline: none;
     text-overflow: ellipsis;
 
-    /* 👇 Mantiene la base de 16px para engañar al navegador y compacta visualmente la letra */
     font-size: 16px; 
-    transform: scale(0.68); 
+    transform: scale(0.58); 
     transform-origin: left center;
-    width: 147%; 
+    width: 172%; 
 }
 .input-observacion-lineal:focus { 
     color: var(--primario); 
@@ -210,31 +208,30 @@ body {
 }
 
 .celda-alerta-final {
-    flex: 0 0 20px;
+    flex: 0 0 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: visible;
-    padding-right: 2px;
 }
 
 .espacio-alerta-alinhado-vacio {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     display: inline-block;
 }
 
 @keyframes pulso-vencido {
-    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.9; }
-    50% { transform: scale(1.15); filter: drop-shadow(0 0 3px rgba(220,38,38,0.8)); opacity: 1; }
-    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.9; }
+    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.8; }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 2px rgba(220,38,38,0.8)); opacity: 1; }
+    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.8; }
 }
 
 @keyframes pulso-proximo {
-    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.9; }
-    50% { transform: scale(1.1); filter: drop-shadow(0 0 2px rgba(217,119,6,0.6)); opacity: 1; }
-    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.9; }
+    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.8; }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 2px rgba(217,119,6,0.6)); opacity: 1; }
+    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.8; }
 }
 
 .contenedor-alerta-tooltip {
@@ -244,22 +241,22 @@ body {
     overflow: visible;
 }
 .emoji-alerta-interactivo.vencido {
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     animation: pulso-vencido 1.2s infinite ease-in-out;
 }
 .emoji-alerta-interactivo.proximo {
-    font-size: 0.7rem;
+    font-size: 0.62rem;
     animation: pulso-proximo 1.8s infinite ease-in-out;
 }
 
 .contenedor-alerta-tooltip .tooltip-texto {
     visibility: hidden;
-    width: 150px;
+    width: 140px;
     background-color: #0f172a;
     color: #ffffff;
     text-align: center;
     border-radius: 4px;
-    padding: 5px;
+    padding: 4px;
     position: absolute;
     z-index: 200;
     bottom: 130%;          
@@ -268,10 +265,10 @@ body {
     transform: none; 
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     line-height: 1.2;
     font-weight: 600;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
     pointer-events: none;
     white-space: normal;    
 }
@@ -280,8 +277,8 @@ body {
     position: absolute; 
     top: 100%; 
     left: auto;
-    right: 6px;            
-    border-width: 4px; 
+    right: 4px;            
+    border-width: 3px; 
     border-style: solid; 
     border-color: #0f172a transparent transparent transparent;
 }
@@ -338,8 +335,6 @@ body {
     height: 32px; 
     outline: none; 
     display: block;
-
-    /* 👇 Ajuste iOS: Fuente base a 16px para desactivar el zoom de enfoque */
     font-size: 16px; 
 }
 .form-col input:focus, .form-col select:focus {
@@ -392,8 +387,6 @@ body {
     border-radius: 4px; 
     outline: none;
     text-transform: uppercase;
-
-    /* 👇 Ajuste iOS: Evita el zoom al enfocar la barra de búsqueda rápida */
     font-size: 16px; 
 }
 .contenedor-buscador input:focus { border-color: var(--acentos); }
