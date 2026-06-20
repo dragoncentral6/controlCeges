@@ -14,7 +14,7 @@ import {
 // ==========================================================================
 // CONFIGURACIÓN GLOBAL Y ESTADOS
 // ==========================================================================
-let gruas = []; // Ahora los datos provienen de Firebase en tiempo real
+let gruas = []; 
 let filtroActual = 'todos';
 let paginaActual = 1;
 const filasPorPagina = 5;
@@ -54,14 +54,12 @@ const filtrosSutiles = document.querySelectorAll('.btn-filtro-sutil');
 // ==========================================================================
 // ESCUCHA EN TIEMPO REAL (FIRESTORE SNAPSHOT)
 // ==========================================================================
-// Esta función reemplaza la lectura de localStorage y se activa sola cada vez que cambian los datos
 onSnapshot(gruasCollectionRef, (snapshot) => {
     gruas = [];
     snapshot.forEach((doc) => {
         gruas.push({ id: doc.id, ...doc.data() });
     });
     
-    // Una vez recibidos o actualizados los datos, renderizamos las vistas
     renderizarVistaPrincipal();
     renderizarTablaAdministrativa();
 });
@@ -138,8 +136,7 @@ function evaluarAlertasGrua(grua) {
         }
     }
 
-    // 🌟 REGLA AUTOMÁTICA CON FIREBASE: Si posee algún documento vencido y no está inactiva,
-    // actualizamos de forma asíncrona el documento en Firestore.
+    // Si posee algún documento vencido y no está inactiva, se fuerza el cambio en Firestore
     if (tipoAlerta === 'vencido' && grua.estado !== 'inactivo' && grua.id) {
         const gruaDocRef = doc(db, "gruas", grua.id);
         updateDoc(gruaDocRef, {
@@ -181,9 +178,19 @@ function renderizarVistaPrincipal() {
         return true;
     });
 
+    // Doble Criterio de Ordenamiento: 1° Estado operativo, 2° Alias de menor a mayor (A-Z)
     gruasFiltradas.sort((a, b) => {
         const ordenOperativo = { 'inactivo': 1, 'activo': 2, 'operativo': 3, 'recorrido': 4 };
-        return (ordenOperativo[a.estado] || 5) - (ordenOperativo[b.estado] || 5);
+        const pesoA = ordenOperativo[a.estado] || 5;
+        const pesoB = ordenOperativo[b.estado] || 5;
+
+        if (pesoA !== pesoB) {
+            return pesoA - pesoB;
+        }
+        
+        const aliasA = (a.alias || '').toLowerCase();
+        const aliasB = (b.alias || '').toLowerCase();
+        return aliasA.localeCompare(aliasB);
     });
 
     if (gruasFiltradas.length === 0) {
@@ -255,6 +262,7 @@ function renderizarVistaPrincipal() {
         selectEst.addEventListener('change', (e) => {
             const nuevoEstado = e.target.value;
 
+            // Bloqueo si posee documentos vencidos
             if (tipoAlerta === 'vencido' && nuevoEstado !== 'inactivo') {
                 alert(`⚠️ NOTIFICACIÓN: No es posible cambiar el estado. La unidad posee documentos vencidos (${detalle}). Por favor actualice las fechas.`);
                 e.target.value = 'inactivo';
@@ -378,7 +386,6 @@ function renderizarTablaAdministrativa() {
             </td>
         `;
 
-        // Delegación de eventos locales para evitar colisiones con el alcance modular
         tr.querySelectorAll('.btn-accion-tabla').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const id = btn.getAttribute('data-id');
@@ -433,7 +440,6 @@ function notificarGruero(id) {
     window.open(urlWhatsapp, '_blank');
 }
 
-// Vinculación global explícita para el llamado desde las alertas dinámicas en tarjetas
 window.redireccionarAEdicion = function(id) {
     cargarEdicionGrua(id); 
     cambiarVista('vista-registro'); 
@@ -466,6 +472,9 @@ function cargarEdicionGrua(id) {
     btnCancelar.style.display = "inline-block";
     formGrua.scrollIntoView({ behavior: 'smooth' });
 }
+
+// Vinculación al entorno global requerida para llamadas cruzadas
+window.cargarEdicionGrua = cargarEdicionGrua;
 
 function eliminarGrua(id) {
     if (confirm('¿Confirma que desea eliminar esta grúa del sistema?')) {
@@ -512,7 +521,6 @@ formGrua.addEventListener('submit', async (e) => {
         visible: gruaExistente ? (gruaExistente.visible !== false) : true
     };
 
-    // Validar duplicidad de placas (excluyendo la grúa en edición)
     const placaDuplicada = gruas.some(g => g.placa === datosGrua.placa && g.id !== idEdicion);
     if (placaDuplicada) {
         alert('Error: Ya existe otra grúa registrada con la placa ' + datosGrua.placa);
@@ -521,11 +529,9 @@ formGrua.addEventListener('submit', async (e) => {
 
     try {
         if (idEdicion) {
-            // Actualizar documento existente
             const gruaDocRef = doc(db, "gruas", idEdicion);
             await updateDoc(gruaDocRef, datosGrua);
         } else {
-            // Crear nuevo documento con ID autogenerado por Firebase
             await addDoc(gruasCollectionRef, datosGrua);
         }
         
@@ -568,5 +574,5 @@ btnNext.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Nota: El render inicial ocurre automáticamente a través de onSnapshot al cargar la app
+    // La sincronización inicial es controlada automáticamente por onSnapshot
 });
