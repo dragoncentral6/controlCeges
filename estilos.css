@@ -87,7 +87,7 @@ body {
 }
 
 /* ==========================================================================
-   PLANILLA LINEAL (INTERFAZ DE VISUALIZACIÓN)
+   PLANILLA LINEAL (INTERFAZ DE VISUALIZACIÓN) - VERSIÓN ULTRA-MICRO MÓVIL
    ========================================================================= */
 .contenedor-filas-lineales { 
     display: flex; 
@@ -99,14 +99,14 @@ body {
     display: flex; 
     align-items: center; 
     width: 100%; 
-    padding: 6px 4px;
+    padding: 1px 0; /* Relleno mínimo para maximizar filas en pantalla */
 }
 .celda-lineal { 
-    padding: 2px; 
+    padding: 0 1px; 
 }
 
 .celda-alias-alerta-bloque {
-    flex: 0 0 70px;         
+    flex: 0 0 46px; /* Más estrecho para ganar espacio horizontal */        
     display: flex;
     align-items: center;
     justify-content: flex-start; 
@@ -122,7 +122,7 @@ body {
 }
 
 .texto-alias-label {
-    font-size: 0.75rem;     
+    font-size: 0.62rem; /* Letra del alias aún más pequeña */    
     font-weight: 700;
     color: var(--texto);
     white-space: nowrap;
@@ -136,13 +136,13 @@ body {
     background-color: var(--primario);
     color: #ffffff;
     text-align: center;
-    padding: 4px 6px;
+    padding: 2px 4px;
     border-radius: 4px;
     position: absolute;
     z-index: 150;
     bottom: 115%;          
     left: 0;
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     font-weight: 800;
     letter-spacing: 0.5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -157,11 +157,11 @@ body {
 }
 
 .celda-select { 
-    flex: 0 0 80px;         
+    flex: 0 0 60px; /* Columnas de select compactadas al mínimo */        
 }
 .select-lineal-interactivo {
     width: 100%;
-    height: 24px;
+    height: 18px;
     border: none;
     background: transparent;
     outline: none;
@@ -169,10 +169,14 @@ body {
     text-transform: uppercase;
     appearance: none;
     -webkit-appearance: none;
-    padding: 0 2px;
+    padding: 0;
+    font-weight: 700;
     
-    /* 👇 Ajuste iOS: Forzar mínimo 16px para desactivar el zoom automático */
+    /* 👇 Engaña al navegador con base de 16px (no zoom) pero encoge visualmente casi a la mitad */
     font-size: 16px; 
+    transform: scale(0.58); 
+    transform-origin: left center;
+    width: 172%; /* Ajuste matemático para compensar el scale ultra pequeño */
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
@@ -186,16 +190,19 @@ body {
 }
 .input-observacion-lineal {
     width: 100%;
-    height: 24px;
+    height: 18px;
     border: none;
     background: transparent;
-    padding: 0 4px;
+    padding: 0;
     color: #64748b;
     outline: none;
     text-overflow: ellipsis;
 
-    /* 👇 Ajuste iOS: Forzar mínimo 16px para bloquear el zoom nativo */
+    /* 👇 Mismo truco: base 16px física y escalado micro visual */
     font-size: 16px; 
+    transform: scale(0.58); 
+    transform-origin: left center;
+    width: 172%; 
 }
 .input-observacion-lineal:focus { 
     color: var(--primario); 
@@ -203,31 +210,30 @@ body {
 }
 
 .celda-alerta-final {
-    flex: 0 0 24px;
+    flex: 0 0 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: visible;
-    padding-right: 4px;
 }
 
 .espacio-alerta-alinhado-vacio {
-    width: 16px;
-    height: 16px;
+    width: 10px;
+    height: 10px;
     display: inline-block;
 }
 
 @keyframes pulso-vencido {
-    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.9; }
-    50% { transform: scale(1.15); filter: drop-shadow(0 0 4px rgba(220,38,38,0.8)); opacity: 1; }
-    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.9; }
+    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.8; }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 2px rgba(220,38,38,0.8)); opacity: 1; }
+    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(220,38,38,0.5)); opacity: 0.8; }
 }
 
 @keyframes pulso-proximo {
-    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.9; }
-    50% { transform: scale(1.1); filter: drop-shadow(0 0 3px rgba(217,119,6,0.6)); opacity: 1; }
-    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.9; }
+    0% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.8; }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 2px rgba(217,119,6,0.6)); opacity: 1; }
+    100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(217,119,6,0.4)); opacity: 0.8; }
 }
 
 .contenedor-alerta-tooltip {
@@ -237,22 +243,22 @@ body {
     overflow: visible;
 }
 .emoji-alerta-interactivo.vencido {
-    font-size: 0.75rem;
+    font-size: 0.58rem;
     animation: pulso-vencido 1.2s infinite ease-in-out;
 }
 .emoji-alerta-interactivo.proximo {
-    font-size: 0.8rem;
+    font-size: 0.62rem;
     animation: pulso-proximo 1.8s infinite ease-in-out;
 }
 
 .contenedor-alerta-tooltip .tooltip-texto {
     visibility: hidden;
-    width: 160px;
+    width: 140px;
     background-color: #0f172a;
     color: #ffffff;
     text-align: center;
     border-radius: 4px;
-    padding: 6px;
+    padding: 4px;
     position: absolute;
     z-index: 200;
     bottom: 130%;          
@@ -261,10 +267,10 @@ body {
     transform: none; 
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
-    font-size: 0.65rem;
+    font-size: 0.58rem;
     line-height: 1.2;
     font-weight: 600;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
     pointer-events: none;
     white-space: normal;    
 }
@@ -273,8 +279,8 @@ body {
     position: absolute; 
     top: 100%; 
     left: auto;
-    right: 6px;            
-    border-width: 4px; 
+    right: 4px;            
+    border-width: 3px; 
     border-style: solid; 
     border-color: #0f172a transparent transparent transparent;
 }
@@ -332,14 +338,13 @@ body {
     outline: none; 
     display: block;
 
-    /* 👇 Ajuste iOS: Fuente base a 16px para engañar al navegador y desactivar el zoom */
+    /* 👇 Ajuste iOS: Fuente base a 16px para desactivar el zoom de enfoque */
     font-size: 16px; 
 }
 .form-col input:focus, .form-col select:focus {
     border-color: var(--acentos);
 }
 
-/* Opcional: Hace que el placeholder del formulario se vea ligeramente más estilizado en móviles */
 @media screen and (max-width: 768px) {
     .form-col input::placeholder {
         font-size: 13px;
