@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control de Grúas - CEGES</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>CONTROL DE GRÚAS</h1>
+    </header>
+
+    <main class="app-content">
+
+        <section id="vista-visualizar" class="vista active">
+            
+            <div class="micro-barra-filtros">
+                <button type="button" class="btn-filtro-sutil active" data-filtro="todos">Todos</button>
+                <button type="button" class="btn-filtro-sutil" data-filtro="inactivo">Inactivos</button>
+                <button type="button" class="btn-filtro-sutil" data-filtro="activo">Activos</button>
+                <button type="button" class="btn-filtro-sutil" data-filtro="otros">Otros</button>
+            </div>
+
+            <div id="contenedor-cards" class="contenedor-filas-lineales"></div>
+        </section>
+
+        <section id="vista-registro" class="vista">
+            <div class="titulo-seccion">
+                <h2 id="titulo-formulario">Registrar Nueva Grúa</h2>
+            </div>
+
+            <form id="form-grua" class="form-movil-compacto">
+                <input type="hidden" id="txt-id-edicion" value="">
+
+                <div class="form-row">
+                    <div class="form-col pct-35">
+                        <label for="txt-placa">Placa</label>
+                        <input type="text" id="txt-placa" placeholder="ABC123" required autocomplete="off" style="text-transform: uppercase;">
+                    </div>
+                    <div class="form-col pct-65">
+                        <label for="txt-alias">Alias de la Grúa</label>
+                        <input type="text" id="txt-alias" placeholder="Ej. 10,11..." required autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col">
+                        <label for="select-estado">Estado</label>
+                        <select id="select-estado">
+                            <option value="activo">Activo</option>
+                            <option value="inactivo" selected>Inactivo</option>
+                            <option value="recorrido">Recorrido</option>
+                            <option value="operativo">Operativo</option>
+                        </select>
+                    </div>
+                    <div class="form-col">
+                        <label for="select-posicion">Posición</label>
+                        <select id="select-posicion">
+                            <option value="QSY">QSY</option>
+                            <option value="ruta">Ruta</option>
+                            <option value="patios">Patios</option>
+                            <option value="CT">CT</option>
+                            <option value="" selected>(En Blanco)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row fila-fechas">
+                    <div class="form-col">
+                        <label for="date-soat">SOAT</label>
+                        <input type="date" id="date-soat">
+                    </div>
+                    <div class="form-col">
+                        <label for="date-poliza">Póliza TR</label>
+                        <input type="date" id="date-poliza">
+                    </div>
+                    <div class="form-col">
+                        <label for="date-rtm">RTM</label>
+                        <input type="date" id="date-rtm">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-col pct-35">
+                        <label for="txt-telefono">Teléfono</label>
+                        <input type="tel" id="txt-telefono" placeholder="3001234567" required autocomplete="off">
+                    </div>
+                    <div class="form-col pct-65">
+                        <label for="txt-observaciones">Observaciones</label>
+                        <input type="text" id="txt-observaciones" placeholder="Detalles..." autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-acciones">
+                    <button type="submit" id="btn-guardar" class="btn-primary">GUARDAR GRÚA</button>
+                    <button type="button" id="btn-cancelar" class="btn-secondary" style="display: none;">Cancelar</button>
+                </div>
+            </form>
+
+            <div class="contenedor-buscador">
+                <input type="text" id="txt-buscar" placeholder="🔍 PLACA O ALIAS" autocomplete="off" uppercase>
+            </div>
+
+            <div class="tabla-contenedor-scroll">
+                <table class="tabla-admin">
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Alias</th>
+                            <th>Estado</th>
+                            <th>Posición</th>
+                            <th>Vencimientos</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-gruas"></tbody>
+                </table>
+            </div>
+
+            <div class="paginacion-controles">
+                <button type="button" id="btn-prev" class="btn-pag">◀ Ant</button>
+                <span id="info-paginas">Pág. 1 de 1</span>
+                <button type="button" id="btn-next" class="btn-pag">Sig ▶</button>
+            </div>
+        </section>
+
+    </main>
+
+    <nav class="nav-inferior">
+        <button type="button" class="nav-btn active" data-target="vista-visualizar" id="nav-btn-visualizar">
+            <span class="nav-icon" aria-hidden="true">📊</span>
+            <span class="nav-text">Visualización</span>
+        </button>
+        <button type="button" class="nav-btn" data-target="vista-registro" id="nav-btn-registro">
+            <span class="nav-icon" aria-hidden="true">📝</span>
+            <span class="nav-text">Registro</span>
+        </button>
+    </nav>
+
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
