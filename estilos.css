@@ -1,17 +1,14 @@
 :root {
     --bg-app: #ffffff;
     --bg-card: #ffffff;
-    /*--primario: #0f172a;    */
     --primario: #3AB089;
     --acentos: #43D182;
     --texto: #334155;
     --borde: #e2e8f0;
-    
     --activo: #059669;
     --inactivo: #dc2626;
     --recorrido: #d97706;
     --operativo: #09AED6;
-    
     --bg-vencido: #fee2e2;
     --bg-proximo: #ffedd5;
 }
@@ -122,7 +119,7 @@ body {
 }
 
 .texto-alias-label {
-    font-size: 0.62rem;     
+    font-size: 0.70rem;     
     font-weight: 700;
     color: var(--texto);
     white-space: nowrap;
@@ -171,8 +168,7 @@ body {
     -webkit-appearance: none;
     padding: 0;
     font-weight: 700;
-    
-    font-size: 16px; 
+    font-size: 20px; 
     transform: scale(0.58); 
     transform-origin: left center;
     width: 172%; 
@@ -196,14 +192,14 @@ body {
     color: #64748b;
     outline: none;
     text-overflow: ellipsis;
-
-    font-size: 16px; 
+    font-size: 20px; 
     transform: scale(0.58); 
     transform-origin: left center;
-    width: 172%; 
+    width: 172%;
+    font-size:bold;
 }
 .input-observacion-lineal:focus { 
-    color: var(--primario); 
+    color: #000000; 
     background: #f8fafc; 
 }
 
