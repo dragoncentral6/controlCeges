@@ -168,10 +168,11 @@ body {
     -webkit-appearance: none;
     padding: 0;
     font-weight: 700;
-    font-size: 19px; 
+    font-size: smaller; 
     transform: scale(0.58); 
     transform-origin: left center;
     width: 175%;
+    text-aling:center;
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
