@@ -158,7 +158,7 @@ body {
 }
 .select-lineal-interactivo {
     width: 100%;
-    height: 18px;
+    height: 21px;
     border: none;
     background: transparent;
     outline: none;
@@ -171,7 +171,7 @@ body {
     font-size: 20px; 
     transform: scale(0.58); 
     transform-origin: left center;
-    width: 172%; 
+    /*width: 172%; */
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
@@ -185,11 +185,11 @@ body {
 }
 .input-observacion-lineal {
     width: 100%;
-    height: 18px;
+    height: 21px;
     border: none;
     background: transparent;
     padding: 0;
-    color: #64748b;
+    color: #000000;
     outline: none;
     text-overflow: ellipsis;
     font-size: 20px; 
