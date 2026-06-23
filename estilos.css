@@ -168,7 +168,8 @@ body {
     -webkit-appearance: none;
     padding: 0;
     font-weight: 700;
-    font-size: smaller; 
+    /*font-size: 18px; */
+    font-size: small; 
     transform: scale(0.58); 
     transform-origin: left center;
     width: 175%;
