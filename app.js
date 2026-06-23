@@ -249,7 +249,7 @@ function renderizarVistaPrincipal() {
             <div class="celda-lineal celda-observacion">
                 <input type="text" class="input-observacion-lineal" 
                        value="${grua.observaciones || ''}" 
-                       placeholder="Sin novedades..." 
+                       placeholder=" " 
                        data-id="${grua.id}">
             </div>
 
