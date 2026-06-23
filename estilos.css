@@ -201,6 +201,12 @@ body {
     font-size:bold;
     text-transform: capitalize;
 }
+
+.input-observacion-lineal::placeholder{
+	opacity:1;
+}
+
+
 .input-observacion-lineal:focus { 
     color: #000000; 
     background: #f8fafc; 
