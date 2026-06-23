@@ -171,7 +171,7 @@ body {
     font-size: 20px; 
     transform: scale(0.58); 
     transform-origin: left center;
-    /*width: 172%; */
+    width: 172%;
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
