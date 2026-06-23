@@ -239,6 +239,7 @@ function renderizarVistaPrincipal() {
                 <select class="select-lineal-interactivo select-posicion-plano" data-id="${grua.id}" ${grua.estado === 'inactivo' ? 'disabled' : ''}>
                     <option value="" ${grua.posicion === '' ? 'selected' : ''}>--</option>
                     <option value="QSY" ${grua.posicion === 'QSY' ? 'selected' : ''}>QSY</option>
+								<option value="QAP" ${grua.posicion === 'QAP' ? 'selected' : ''}>QAP</option>
                     <option value="ruta" ${grua.posicion === 'ruta' ? 'selected' : ''}>RUTA</option>
                     <option value="patios" ${grua.posicion === 'patios' ? 'selected' : ''}>PATIOS</option>
                     <option value="CT" ${grua.posicion === 'CT' ? 'selected' : ''}>CT</option>
