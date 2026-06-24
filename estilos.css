@@ -171,8 +171,9 @@ body {
     font-size: 18px;
     /*font-size: small; */
     transform: scale(0.58); 
-    transform-origin: left center;
+    /*transform-origin: left center;*/
     width: 175%;
+		text-align: Center;
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
 .select-lineal-interactivo.estado-inactivo { color: var(--inactivo); }
