@@ -541,7 +541,7 @@ formGrua.addEventListener('submit', async (e) => {
         }
         
         limpiarFormularioAdministrativo();
-        alert('Operación exitosa en Firebase.');
+        alert('Datos Registrados o Actualizados Correctamente.');
     } catch (error) {
         console.error("Error al guardar en Firestore: ", error);
         alert('Ocurrió un error al sincronizar con la base de datos.');
