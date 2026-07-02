@@ -1,0 +1,21 @@
+{
+  "short_name": "MiApp",
+  "name": "Mi Aplicación Web Progresiva",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/index.html",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0078D4",
+  "display": "standalone",
+  "orientation": "portrait"
+}
