@@ -430,14 +430,14 @@ function notificarGruero(id) {
     }
 
     const { tipoAlerta, detalle } = evaluarAlertasGrua(grua);
-    let mensaje = `*LOGÍSTICA CENTRAL CENTRAL-GRÚAS*\n\nEstimado operador de la unidad *${grua.alias}* (Placa: *${grua.placa}*):\n\n`;
+    let mensaje = `*LOGÍSTICA CENTRAL CEGES-GRÚAS*\n\nEstimado operador de la grua *${grua.alias}* (Placa: *${grua.placa}*):\n\n`;
 
     if (tipoAlerta === 'vencido') {
         mensaje += `⚠️ *ALERTA CRÍTICA DE DOCUMENTACIÓN*\nSe registra en el sistema un vencimiento inmediato en: *${detalle}*.\n\nPor seguridad vial y normatividad, por favor reporte la renovación o envíe soporte a la central a la brevedad.`;
     } else if (tipoAlerta === 'proximo') {
-        mensaje += `🔔 *AVISO DE RENOVACIÓN DE DOCUMENTOS*\nLe informamos que se aproximan vencimientos en los próximos días para: *${detalle}*.\n\nPor favor, gestione los trámites correspondientes para evitar detener la operación de la unidad.`;
+        mensaje += `🔔 *AVISO DE RENOVACIÓN DE DOCUMENTOS*\nLe informamos que se aproximan vencimientos en los próximos días para: *${detalle}*.\n\nPor favor, gestione los trámites correspondientes para evitar detener la operación de la grua.`;
     } else {
-        mensaje += `✅ *REVISIÓN DE CONTROL ELECTRÓNICO*\nSus documentos (SOAT, Póliza y RTM) se encuentran al día en nuestra base de datos.\n\n¡Gracias por mantener su unidad en regla! Buen viaje.`;
+        mensaje += `✅ *REVISIÓN DE CONTROL ELECTRÓNICO*\nSus documentos (SOAT, Póliza y RTM) se encuentran al día en nuestra base de datos.\n\n¡Gracias por mantener su grua en regla! Buen viaje.`;
     }
 
     const telefonoLimpio = grua.telefono.replace(/\D/g, '');
