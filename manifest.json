@@ -1,6 +1,6 @@
 {
-  "short_name": "MiApp",
-  "name": "Mi Aplicación Web Progresiva",
+  "short_name": "ControlGrua",
+  "name": "Control Gruas Ceges",
   "icons": [
     {
       "src": "images/gruaMedia.png",
