@@ -2,8 +2,8 @@ const CACHE_NAME = 'v1_cache_miapp';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
+  '/estilos.css',
+  '/app.js',
   '/images/icon-192.png'
 ];
 
