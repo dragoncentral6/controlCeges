@@ -3,12 +3,12 @@
   "name": "Mi Aplicación Web Progresiva",
   "icons": [
     {
-      "src": "images/icon-192.png",
+      "src": "images/iconMedia.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "images/icon-512.png",
+      "src": "images/iconBig.png",
       "type": "image/png",
       "sizes": "512x512"
     }
