@@ -1,10 +1,10 @@
 const CACHE_NAME = 'v1_cache_miapp';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/estilos.css',
-  '/app.js',
-  '/images/gruaMedia.png'
+  /* '/', */
+  'index.html',
+  'estilos.css',
+  'app.js',
+  'images/gruaMedia.png'
 ];
 
 // Instalar el Service Worker y almacenar recursos en caché
