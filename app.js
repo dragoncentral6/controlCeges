@@ -265,7 +265,7 @@ function renderizarVistaPrincipal() {
 
             // Bloqueo si posee documentos vencidos
             if (tipoAlerta === 'vencido' && nuevoEstado !== 'inactivo') {
-                alert(`⚠️ NOTIFICACIÓN: No es posible cambiar el estado. La unidad posee documentos vencidos (${detalle}). Por favor actualice las fechas.`);
+                alert(`⚠️ NOTIFICACIÓN: No es posible cambiar el estado. La grua posee documentos vencidos (${detalle}). Por favor actualice las fechas.`);
                 e.target.value = 'inactivo';
                 return;
             }
@@ -508,7 +508,7 @@ formGrua.addEventListener('submit', async (e) => {
     const { tipoAlerta, detalle } = evaluarAlertasGrua(tempGrua);
 
     if (tipoAlerta === 'vencido' && selectEstado.value !== 'inactivo') {
-        alert(`⚠️ NOTIFICACIÓN: No es posible registrar/actualizar la grúa en estado activo. La unidad posee documentos vencidos (${detalle}). Se guardará automáticamente como INACTIVO.`);
+        alert(`⚠️ NOTIFICACIÓN: No es posible registrar/actualizar la grúa en estado activo. La grua posee documentos vencidos (${detalle}). Se guardará automáticamente como INACTIVO.`);
         selectEstado.value = 'inactivo';
         selectPosicion.value = '';
     }
