@@ -130,7 +130,7 @@ body {
 }
 
 .celda-alias-alerta-bloque .tooltip-placa {
-    visibility: hidden;
+    visibility: visible;
     background-color: var(--primario);
     color: #ffffff;
     text-align: center;
