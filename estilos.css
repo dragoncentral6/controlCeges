@@ -170,7 +170,7 @@ body {
     -webkit-appearance: none;
     padding: 0;
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     transform-origin: left center;
 }
 .select-lineal-interactivo.estado-activo { color: var(--activo); }
@@ -192,7 +192,7 @@ body {
     color: #000000;
     outline: none;
     text-overflow: ellipsis;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     transform-origin: left center;
     font-weight:bold;
     text-transform: capitalize;
