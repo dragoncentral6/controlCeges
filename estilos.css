@@ -170,7 +170,8 @@ body {
     -webkit-appearance: none;
     padding: 0;
     font-weight: 700;
-    font-size: 0.72rem;
+    /* font-size: 0.75rem; */
+	font-size: 0.875rem;
     transform: scale(0.58); 
     transform-origin: left center;
 }
@@ -193,7 +194,8 @@ body {
     color: #000000;
     outline: none;
     text-overflow: ellipsis;
-    font-size: 0.72rem; 
+    /* font-size: 0.75rem; */
+	font-size: 0.875rem;
     transform: scale(0.58); 
     transform-origin: left center;
     font-weight:bold;
