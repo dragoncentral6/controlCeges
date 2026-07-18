@@ -152,6 +152,7 @@ body {
 .celda-alias-alerta-bloque:hover .tooltip-placa { 
     visibility: visible; 
     opacity: 1; 
+	z-index: 50;
 }
 
 .celda-select { 
