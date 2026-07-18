@@ -136,7 +136,7 @@ body {
     text-align: center;
     padding: 2px 4px;
     border-radius: 4px;
-    position: absolute;
+    position: relative;
     z-index: 200;
     bottom: 115%;          
     left: 0;
